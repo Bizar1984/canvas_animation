@@ -3,7 +3,7 @@ window.onload = function() {
         c = canvas.getContext("2d"),
         width = canvas.width = window.innerWidth,
         height = canvas.height = window.innerHeight,
-        p = particle.create(width / 2, height / 2, 3, Math.random() * Math.PI * 2, 0.1);
+        p = particle.create(width / 2, height / 2, 12, Math.random() * Math.PI * 2, 0.1);
 
     p.radius = 40;
     p.bounce = -0.9;

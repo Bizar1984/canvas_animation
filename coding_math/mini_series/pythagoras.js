@@ -20,6 +20,7 @@ window.onload = function() {
         c.clearRect(0, 0, width, height);
 
         let dist = distanceXY(centerX, centerY, event.clientX, event.clientY);
+        console.log(dist);
     
         if (dist > 200) {
             c.fillStyle = "#ff6666";

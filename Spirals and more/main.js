@@ -26,18 +26,6 @@ window.onload = function() {
             return (max - min) * norm + min;
         };
 
-        // imagine we have the x and y coordinates and we want to have the length and the angle in radians
-        function toPolar(x, y) {
-            const pointOne = {x:0, y: 0};
-            const pointTwo = {x: -200, y: 300};
-            const angles = Math.atan2(y, x);
-
-            return utils.distance(pointOne, pointTwo) + ", " + angles;
-        }
-        
-        console.log(toPolar(-200, 300));
-        
-
         
         
     render();

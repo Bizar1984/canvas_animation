@@ -7,10 +7,11 @@ window.onload = function() {
     context.translate(50, height / 2);
     context.scale(1, -1);
     
-    for(var angle = 0; angle < Math.PI * 2; angle += .01) {
+    for(var angle = 0; angle < Math.PI * 2; angle += .1) {
             
         var x = angle * 220,
             y = Math.sin(angle) * 160;
+            console.log(x, y);
 
         context.fillStyle = '#FFF000';
         context.fillRect(x, y, 5, 5)

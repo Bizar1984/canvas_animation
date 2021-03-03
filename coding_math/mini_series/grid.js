@@ -3,7 +3,7 @@ window.onload = function() {
         c = canvas.getContext("2d"),
         width = canvas.width = window.innerWidth,
         height = canvas.height = window.innerHeight,
-        gridSize = 40;
+        gridSize = 30;
 
     drawGrid();
 

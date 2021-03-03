@@ -71,7 +71,7 @@ var utils = {
 	},
 
 	roundToPlaces: function(value, places) {
-		let mult = Math.pow(10, places);
+		var mult = Math.pow(10, places);
 		return Math.round(value * mult) / mult;
 	},
 
@@ -80,28 +80,45 @@ var utils = {
 	},
 
 	quadraticBezier: function(p0, p1, p2, t, pFinal) {
-		var pFinal = pFinal || {};
+		pFinal = pFinal || {};
 		pFinal.x = Math.pow(1 - t, 2) * p0.x + 
-				   (1 - t) * 2 * t * p1.x +
+				   (1 - t) * 2 * t * p1.x + 
 				   t * t * p2.x;
 		pFinal.y = Math.pow(1 - t, 2) * p0.y + 
-				   (1 - t) * 2 * t * p1.y +
+				   (1 - t) * 2 * t * p1.y + 
 				   t * t * p2.y;
-		return final;
+		return pFinal;
 	},
 
 	cubicBezier: function(p0, p1, p2, p3, t, pFinal) {
-		var pFinal = pFinal || {};
+		pFinal = pFinal || {};
 		pFinal.x = Math.pow(1 - t, 3) * p0.x + 
-				   Math.pow(1 - t, 2) * 3 * t * p1.x +
-				   (1 - t) * 3 * t * t * p2.x +
+				   Math.pow(1 - t, 2) * 3 * t * p1.x + 
+				   (1 - t) * 3 * t * t * p2.x + 
 				   t * t * t * p3.x;
 		pFinal.y = Math.pow(1 - t, 3) * p0.y + 
-				   Math.pow(1 - t, 2) * 3 * t * p1.y +
-				   (1 - t) * 3 * t * t * p2.y +
+				   Math.pow(1 - t, 2) * 3 * t * p1.y + 
+				   (1 - t) * 3 * t * t * p2.y + 
 				   t * t * t * p3.y;
+		return pFinal;
+	},
+
+	multicurve: function(points, context) {
+		var p0, p1, midx, midy;
 		
-		return final;
+		context.moveTo(points[0].x, points[0].y);
+
+		for(var i = 0; i < points.length - 2; i += 1){
+			p0 = points[i];
+			p1 = points[i + 1];
+			midx = (p0.x + p1.x) / 2;
+			midy = (p0.y + p1.y) / 2;
+			context.quadraticCurveTo(p0.x, p0.y, midx, midy);
+		}
+		p0 = points[points.length - 2];
+		p1 = points[points.length - 1];
+		context.quadraticCurveTo(p0.x, p0.y, p1.x, p1.y);
+
 	}
 
 }

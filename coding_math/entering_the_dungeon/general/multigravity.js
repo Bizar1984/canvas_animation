@@ -10,7 +10,7 @@ window.onload = function() {
 			y: 0
 		},
 		particles = [],
-		numParticles = 500;
+		numParticles = 100;
 
 
 	sun1.mass = 10000;

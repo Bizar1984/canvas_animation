@@ -3,16 +3,20 @@ window.onload = function() {
 		context = canvas.getContext("2d"),
 		width = canvas.width = window.innerWidth,
 		height = canvas.height = window.innerHeight,
+		
 		springPoint = {
 			x: width / 2, 
 			y: height / 2
 		},
+
 		springPoint2 = {
 			x: utils.randomRange(0, width),
 			y: utils.randomRange(0, height)
 		},
+
 		weight = particle.create(Math.random() * width, Math.random() * height, 
 								50, Math.random() * Math.PI * 2, 0.5),
+
 		k = 0.1,
 		springLength = 100;
 

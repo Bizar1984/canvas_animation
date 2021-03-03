@@ -3,21 +3,23 @@ window.onload = function () {
         context = canvas.getContext("2d"),
         width = canvas.width = window.innerWidth,
         height = canvas.height = window.innerHeight,
+
         ship = particle.create(width / 2, height / 2, 0, 0),
         thrust = vector.create(0, 0),
+
         angle = 0,
         turningLeft = false,
         turningRight = false,
         thrusting = false;
 
-    ship.friction = 0.99;
+    ship.friction = 0.985;
         
     
 
     update();
+
     // adding velocity to acceleration and acceleration to position: Euler method
     document.body.addEventListener("keydown", function(event) {
-        // console.log(event.keyCode)
         switch(event.keyCode) {
             case 38: // up
                 thrusting = true;
@@ -38,7 +40,6 @@ window.onload = function () {
     });
     
     document.body.addEventListener("keyup", function(event) {
-        // console.log(evenet.keyCode)
         switch (event.keyCode) {
             case 38: // up
                 thrusting = false;
@@ -71,14 +72,13 @@ window.onload = function () {
             thrust.setAngle(angle);
 
             if(thrusting) {
-                thrust.setLength(0.15);
+                thrust.setLength(0.12);
             }
             else {
                 thrust.setLength(0);
             }
-            //  
-
-
+            
+            
             // animation goes here
             ship.accelerate(thrust);
             ship.update();
@@ -92,16 +92,14 @@ window.onload = function () {
             context.lineTo(-10, -7);
             context.lineTo(-10, 7);
             context.lineTo(10, 0);
+
             if(thrusting) {
                 context.moveTo(-10, 0);
                 context.lineTo(-20, 0);
             }
             context.stroke();
-
+            // what is this restore function doing exactly?
             context.restore();
-
-
-            
 
             if(ship.position.getX() > width) {
                 ship.position.setX(0);
@@ -124,4 +122,8 @@ window.onload = function () {
     }
 
 };
+
+
+
+            
 

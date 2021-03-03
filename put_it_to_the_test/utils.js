@@ -87,7 +87,7 @@ var utils = {
 		pFinal.y = Math.pow(1 - t, 2) * p0.y + 
 				   (1 - t) * 2 * t * p1.y +
 				   t * t * p2.y;
-		return final;
+		return pFinal;
 	},
 
 	cubicBezier: function(p0, p1, p2, p3, t, pFinal) {
@@ -101,7 +101,25 @@ var utils = {
 				   (1 - t) * 3 * t * t * p2.y +
 				   t * t * t * p3.y;
 		
-		return final;
+		return pFinal;
+	},
+
+	multicurve: function(points, context) {
+		var p0, p1, midx, midy;
+		
+		context.moveTo(points[0].x, points[0].y);
+
+		for(var i = 0; i < points.length - 2; i += 1){
+			p0 = points[i];
+			p1 = points[i + 1];
+			midx = (p0.x + p1.x) / 2;
+			midy = (p0.y + p1.y) / 2;
+			context.quadraticCurveTo(p0.x, p0.y, midx, midy);
+		}
+		p0 = points[points.length - 2];
+		p1 = points[points.length - 1];
+		context.quadraticCurveTo(p0.x, p0.y, p1.x, p1.y);
+
 	}
 
 }
