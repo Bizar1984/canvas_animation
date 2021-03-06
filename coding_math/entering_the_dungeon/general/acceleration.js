@@ -3,7 +3,7 @@ window.onload = function() {
         context = canvas.getContext("2d"),
         width = canvas.width = window.innerWidth,
         height = canvas.height = window.innerHeight,
-        p = particle.create(100, height / 2, .5, Math.PI, 0);
+        p = particle.create(100, height / 2, .5, Math.PI, 0.2);
         accel = vector.create(0.8, 0);
     
     update();
@@ -13,7 +13,7 @@ window.onload = function() {
         context.clearRect(0, 0, width, height);
 
         p.accelerate(accel);
-        p.velocity.multiplyBy(0.96);
+        p.velocity.multiplyBy(0.9);
 
         p.update();
 

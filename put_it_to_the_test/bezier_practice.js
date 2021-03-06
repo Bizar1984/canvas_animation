@@ -1,8 +1,9 @@
 window.onload = function() {
     const canvas = document.getElementById("canvas"),
-        context = canvas.getContext("2d"),
-        width = canvas.width = window.innerWidth,
-        height = canvas.height = window.innerHeight;
+          context = canvas.getContext("2d"),
+          width = canvas.width = window.innerWidth,
+          height = canvas.height = window.innerHeight;
+    
 
     
     let p0 = {
@@ -21,15 +22,15 @@ window.onload = function() {
             x: utils.randomRange(0, width),
             y: utils.randomRange(0, height)
         },
+        ball = {x:p0.x, y: p0.y},
+        distance = utils.distance(p0, p3),
         speed = 3,
-        ball = {x:p0.x, y: p0.y};
-        distance = utils.distance(p0, p3)
         moves = distance / speed,
         xunits = (p3.x - p0.x) / moves,
         yunits = (p3.y - p0.y) / moves,
         points = [],
         numPoints = 8;
-        // create some random points for beziier action
+        // create some random points for bezier action
         for(let i = 0; i < numPoints; i++) {
             let p = {
                 x: Math.random() * width,
@@ -37,9 +38,10 @@ window.onload = function() {
             };
 
             points.push(p);
-            console.log(points)
+            
             
         }
+        
 
         
         render();
@@ -50,7 +52,7 @@ window.onload = function() {
             // draw ball
             context.beginPath();
             context.fillStyle = "azure";
-            context.arc(ball.x, ball.y, 3, 0, Math.PI * 2, false);
+            context.arc(ball.x, ball.y, 5, 0, Math.PI * 2, false);
             context.fill();
 
             // make the ball move
@@ -60,6 +62,7 @@ window.onload = function() {
                 ball.y += yunits;
                 
             }
+            
 
             // draw straight lines connecting the random points from the array
             context.beginPath();
@@ -69,6 +72,7 @@ window.onload = function() {
                 context.lineTo(points[i].x, points[i].y);
             }
             context.stroke();
+
 
             // draw bezier curve with the multicurve function
             context.strokeStyle = "orange";
@@ -114,9 +118,22 @@ window.onload = function() {
                 utils.cubicBezier(p0, p1, p2, p3, t, pFinal);
                 context.beginPath();
                 context.strokeStyle = "white";
-                context.arc(pFinal.x, pFinal.y, 10, 0, Math.PI * 2, false);
+                context.arc(pFinal.x, pFinal.y, 12, 0, Math.PI * 2, false);
                 context.stroke();
-	        }
+            }
+
+            for (var t = 0; t <= 1; t += 0.05) {
+                utils.cubicBezier(p0, p1, p2, p3, t, pFinal);
+                context.beginPath();
+                context.strokeStyle = "orange";
+                context.arc(pFinal.x, pFinal.y, 8, 0, Math.PI * 2, false);
+                context.stroke();
+            }
+            
+            
+            
+            
+            
             
     
             

@@ -4,7 +4,7 @@ window.onload = function() {
         width = canvas.width = window.innerWidth,
         height = canvas.height = window.innerHeight,
 
-    values = [7, 5, 19, 23, 40, 27, 24, 14, 6, 21, 25, 16, 3, 20, 14],
+    values = [7, 5, 19, 23, 40, 27, 24, 14, 6, 21, 25, 16, 3, 20, 14, 15],
     min = Math.min.apply(null, values),
     max = Math.max.apply(null, values);
 

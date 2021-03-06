@@ -28,5 +28,5 @@ window.onload = function() {
         return xCoordinate + ", " + yCoordinate;
     }
 
-    console.log(toCartesian(5, 37 * Math.PI / 180));
+    console.log(toCartesian(1, 90 * Math.PI / 180));
 };

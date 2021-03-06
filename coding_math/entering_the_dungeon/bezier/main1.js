@@ -43,11 +43,13 @@ window.onload = function() {
 
 	var pFinal = {};
 
-	for(var t = 0; t <= 1; t += 0.01) {
+	for(var t = 0; t <= 1; t += 0.1) {
 		utils.cubicBezier(p0, p1, p2, p3, t, pFinal);
 		context.beginPath();
 		context.arc(pFinal.x, pFinal.y, 10, 0, Math.PI * 2, false);
 		context.stroke();
+		console.log(pFinal);
+
 	}
 	
 };

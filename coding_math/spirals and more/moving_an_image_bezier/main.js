@@ -14,6 +14,34 @@ function eventAssetsLoaded() {
 
 function canvasApp() {
 
+    var p0 = {
+            x: 150,
+            y: 440
+        },
+        p1 = {
+            x: 450,
+            y: 10
+        },
+        p2 = {
+            x: 50,
+            y: 10
+        },
+        p3 = {
+            x: 325,
+            y: 450
+        },
+        player = {
+            x: 0,
+            y: 0,
+            speed: .01,
+            t: 0
+        },
+
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+
     
         
     function drawScreen() {
@@ -36,6 +64,7 @@ function canvasApp() {
         context.clearRect(0, 0, width, height);
 
         player.t += player.speed;
+        
 
         if (player.t > 1) {
             player.t = 1;
@@ -93,20 +122,12 @@ function canvasApp() {
         player.y = yt-bullseye.height / 2;
         context.drawImage(bullseye, player.x, player.y);
         
+        
 
     }
     // end of drawscreen
 
-    var p0 = {x:150, y:440},
-        p1 = {x:450, y:10},
-        p2 = {x:50, y:10},
-        p3 = {x:325, y:450},
-        player = {x: 0, y: 0, speed: .01, t:0},
-
-        canvas = document.getElementById("canvas");
-        context = canvas.getContext("2d");
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
+    
 
         function gameLoop() {
             requestAnimationFrame(gameLoop);
