@@ -1,5 +1,5 @@
 # canvas_animation
-Animations with canvas, mostly from awesome tutorials coding math. Particle file was refactored, either particle.js OR particle2.js works
+Animations with canvas, mostly from awesome tutorials coding math and some of the book HTML5 Canvas. Particle file was refactored, either particle.js OR particle2.js works
 # ballistics
-Pull requests for creating an explosion after hitting target in ballistics game highly appreciated!
+explosion effect after hit target only happens once in the right way! Have not yet been able to properly reset it...
 
